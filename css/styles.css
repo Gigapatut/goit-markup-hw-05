@@ -22,11 +22,6 @@ ul {
     margin: 0;
     padding-left: 0;
 }
-
-img {
-    display: block;
-}
-
 button {
     cursor: pointer;
 }
@@ -37,9 +32,6 @@ button {
     margin: 0 auto;
     padding-left: 15px;
     padding-right: 15px;
-
-    /**------------------outline: 2px solid red;--*/
-
 }
 .section {
     padding-top: 120px;
@@ -49,6 +41,7 @@ button {
     display: block;
     max-width: 100%; 
     height: auto;
+    
 }
 
 body {
@@ -93,7 +86,6 @@ body {
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: var(--studio-color);
-       
 }      
 .header-logo {
     font-family: 'Raleway', sans-serif;
@@ -117,7 +109,9 @@ body {
     font-weight: 500;
     color: #2E2F42;
     padding-top: 24px;
-    padding-bottom: 24px;
+    padding-bottom: 25px;
+    position: relative;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-link:hover {
     color: #404bbf;
@@ -125,27 +119,37 @@ body {
 .header-link:focus {
     color: #404bbf;
 }
-.header-item {
-    
+.stroke::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: #404BBF;
+    border-radius: 2px;
+
+}
+.header-item {  
 }
 .adress {
     font-style: normal;
     padding-top: 24px;
     padding-bottom: 24px;
 }
-
 .adress-list {
     display: flex;
     gap: 40px;
 }
-.adress-item {
-    
+.adress-item {  
 }
 .adress-link {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
     color: #434455;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
 }
 .adress-link:hover {
@@ -190,10 +194,10 @@ body {
     line-height: 1.5;
     letter-spacing: 0.04em;
     color: var(--often-color);
-    cursor: pointer;
     border: none;
     margin: 0 auto;
-    border-radius: 4px;   
+    border-radius: 4px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-button:hover {
     background-color: #404BBF;
@@ -247,7 +251,6 @@ body {
 .doing {
     text-align: center;
     padding-top: 0;
-
 }
 .doing-title {
     font-weight: 700;
@@ -327,6 +330,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-soc-link:hover {
     background-color: #404BBF;
@@ -359,6 +363,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 16px 32px;
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customers-link:hover {
     border: 1px solid #404BBF;
@@ -368,6 +373,7 @@ body {
 }
 .icon {
     fill: #8e8f99;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icon:hover {
     fill: #404BBF;
@@ -440,12 +446,53 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .media-soc-link:hover {
     background-color: #31D0AA;
 }
 .media-soc-link:focus {
     background-color: #31D0AA;
+}
+.backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(46, 47, 66, 0.4);
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 408px;
+    height: 576px;
+    transform: translate(-50%, -50%);
+    background: #FCFCFC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+                    0px 1px 3px rgba(0, 0, 0, 0.12), 
+                    0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;      
+}
+.close-icon {
+    fill: #2E2F42;           
+}
+.modal-button {
+    width: 24px;
+    height: 24px;
+    background-color: #E7E9FC;
+    border: 1px solid #b3b4c7;
+    border-radius: 50%;
+    position: relative;
+    top: 24px;
+    left: 360px;          
 }
 /**--------------------PORTFOLIO-----------*/
 .nine {
@@ -459,8 +506,7 @@ body {
     display: flex;
     margin-bottom: 72px;
     gap: 24px;
-
-justify-content: center;  
+    justify-content: center;  
 }
 .filter-button {
     min-width: 70px;
@@ -472,21 +518,17 @@ justify-content: center;
     line-height: 1.5;
     letter-spacing: 0.04em;
     color: #4D5AE5;
-    cursor: pointer;
     border: 1px solid #E7E9FC;
     border-radius: 4px;
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 24px;
     padding-right: 24px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.filter-button:hover {
-    background-color: #404BBF;
-    color: var(--often-color);
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 
-                0px 2px 1px rgba(0, 0, 0, 0.08), 
-                0px 2px 2px rgba(0, 0, 0, 0.12);
-}
+.filter-button:hover,
 .filter-button:focus {
     background-color: #404BBF;
     color: var(--often-color);
@@ -494,15 +536,13 @@ justify-content: center;
                 0px 2px 1px rgba(0, 0, 0, 0.08), 
                 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
-.direct-title {  
-}
 .direct-list {
     display: flex;
     flex-wrap: wrap;
     gap: 48px 24px;
 }
 .direct-list >.item {
-    flex-basis: calc(100% / 3);
+    flex-basis: calc(100% / 3); 
 }
 .direct-card {
     font-weight: 500;
@@ -526,9 +566,40 @@ justify-content: center;
 }
 .direct-link {
     display: block;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .direct-link:hover {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 
                 0px 1px 1px rgba(46, 47, 66, 0.16), 
                 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #4D5AE5;
+    transform: translatey(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);  
+}
+.direct-thumb {
+    position: relative;
+    overflow: hidden;
+}
+.overlay {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    padding: 40px 32px 164px 32px;
+    color: #F4F4FD;
+}
+.direct-link:hover .overlay, 
+.direct-link:focus .overlay {
+    transform: translatey(0);  
+}
+
+
